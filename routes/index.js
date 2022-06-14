@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET home page. */
 
 router.get('/test', function(req, res, next) {
-  res.render('index', { body: 'This is a test page'  });
+  res.render('index', { body: 'We will be right back' });
 })
 
 router.get('*', function(req, res, next) {
@@ -13,7 +13,7 @@ router.get('*', function(req, res, next) {
   var started = true;
   if (started) {
     var fullUrl = url.format({
-      protocol: req.protocol,
+      protocol: 'https',
       host: req.get('host'),
       pathname: req.originalUrl
     });
@@ -24,7 +24,7 @@ router.get('*', function(req, res, next) {
       return;
     }
   }
-  res.render('index', { body: 'We will be right back'  });
+  res.render('index', { body: 'We will be right back' });
 });
 
 module.exports = router;
