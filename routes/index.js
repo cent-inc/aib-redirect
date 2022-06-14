@@ -3,8 +3,13 @@ var url = require('url');
 var router = express.Router();
 
 /* GET home page. */
+
+router.get('/test', function(req, res, next) {
+  res.render('index', { body: 'This is a test page'  });
+})
+
 router.get('*', function(req, res, next) {
-  // const started = false;
+  var started = false;
   var started = true;
   if (started) {
     var fullUrl = url.format({
@@ -12,10 +17,14 @@ router.get('*', function(req, res, next) {
       host: req.get('host'),
       pathname: req.originalUrl
     });
-    res.redirect(fullUrl.replace('app.bio', 'cent.co'));
-    return;
+    var redirectUrl = fullUrl.replace('cent.app.bio', 'collect.cent.co');
+    redirectUrl = fullUrl.replace('app.bio', 'cent.co');
+    if (fullUrl != redirectUrl) {
+      res.redirect(redirectUrl);
+      return;
+    }
   }
-  res.render('index', { title: 'We will be right back'  });
+  res.render('index', { body: 'We will be right back'  });
 });
 
 module.exports = router;
