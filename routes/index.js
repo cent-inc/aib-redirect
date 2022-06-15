@@ -18,7 +18,7 @@ router.get('*', function(req, res, next) {
       pathname: req.originalUrl
     });
     var redirectUrl = fullUrl.replace('cent.app.bio', 'collect.cent.co');
-    redirectUrl = fullUrl.replace('app.bio', 'cent.co');
+    redirectUrl = redirectUrl.replace('app.bio', 'cent.co');
     if (fullUrl != redirectUrl) {
       res.redirect(redirectUrl);
       return;
